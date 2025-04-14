@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Caesar Cipher</title>
+  <style>
+    :root {
+      --primary: #e91e63;
+      --background: #fff0f6;
+      --card: #ffffff;
+      --text: #4a004f;
+      --input-bg: #ffe0eb;
+      --button-hover: #c2185b;
+      --border: #f8bbd0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--background);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 30px 15px;
+    }
+
+    .card {
+      background: var(--card);
+      width: 100%;
+      max-width: 600px;
+      padding: 40px;
+      border-radius: 30px;
+      box-shadow: 0 12px 30px rgba(233, 30, 99, 0.2);
+      border: 3px solid var(--border);
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 25px;
+      font-size: 28px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+
+    textarea,
+    input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 15px;
+      border: 2px solid var(--border);
+      background-color: var(--input-bg);
+      color: var(--text);
+      font-size: 16px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+      direction: ltr;
+      unicode-bidi: plaintext;
+    }
+
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    .buttons button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 40px;
+      font-size: 16px;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .buttons button:hover {
+      background-color: var(--button-hover);
+    }
+
+    .output {
+      background-color: #fce4ec;
+      padding: 18px;
+      border-radius: 15px;
+      margin-top: 30px;
+      border: 2px dashed var(--primary);
+    }
+
+    .output p {
+      margin-top: 10px;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Caesar Cipher</h2>
+
+    <form method="POST">
+      <label for="plaintext">💌 Plain Text</label>
+      <textarea name="plaintext" rows="5" placeholder="Enter your text here">{{ plaintext }}</textarea>
+
+      <label for="shift">🔢 Shift Value</label>
+      <input type="number" name="shift" value="{{ shift }}">
+
+      <div class="buttons">
+        <button type="submit">🔒 Encrypt</button>
+      </div>
+    </form>
+
+    {% if encrypted %}
+      <!-- Displaying the "Encrypted Text" label above the output textarea -->
+      <label for="encrypted-text">🌸 Encrypted Text</label>
+      <textarea id="encrypted-text" readonly>{{ encrypted }}</textarea>
+    {% endif %}
+  </div>
+</body>
+</html>
